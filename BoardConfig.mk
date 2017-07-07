@@ -57,6 +57,9 @@ ifeq ($(TARGET_PREBUILT_KERNEL),)
   TARGET_KERNEL_SOURCE := kernel/xiaomi/raphael
 endif
 
+# Enable real time lockscreen charging current values
+BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
+
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
 FORCE_QCOM_DISPLAY_HAL_VARIANT := sm8150
