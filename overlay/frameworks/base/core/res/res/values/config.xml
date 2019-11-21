@@ -400,5 +400,8 @@
 
     <!-- True if the firmware supports p2p MAC randomization -->
     <bool name="config_wifi_p2p_mac_randomization_supported">true</bool>
+
+    <!-- If true, the camera will be used more often. -->
+    <bool name="config_adaptive_sleep_available">false</bool>
 </resources>
 
