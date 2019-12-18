@@ -4,5 +4,10 @@
     "repository": "vendor_xiaomi",
     "target_path": "vendor/xiaomi",
     "branch": "ten"
+  },
+  {
+    "repository": "PixelExperience-Devices/vendor_MiuiCamera",
+    "target_path": "vendor/MiuiCamera",
+    "branch": "ten-anx-48mp"
   }
 ]
