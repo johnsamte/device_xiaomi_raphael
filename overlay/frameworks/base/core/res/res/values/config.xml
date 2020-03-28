@@ -646,4 +646,7 @@
         <item>264</item>
         <item>265</item>
     </integer-array>
+
+    <!-- If face auth sends the user directly to home/last open app, or stays on keyguard -->
+    <bool name="config_faceAuthDismissesKeyguard">false</bool>
 </resources>
