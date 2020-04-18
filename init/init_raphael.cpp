@@ -99,6 +99,9 @@ void vendor_load_properties() {
         LOG(ERROR) << __func__ << ": unexcepted region!";
     }
 
+    property_override("org.evolution.build_donate_url", "https://paypal.me/joeyhuab");
+    property_override("org.evolution.build_maintainer", "Joey Huab");
+    property_override("org.evolution.build_support_url", "https://t.me/EvolutionXRaphael");
     property_override("ro.oem_unlock_supported", "0");
     property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "google/coral/coral:10/QQ2A.200501.001.B2/6352890:user/release-keys");
 
