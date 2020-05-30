@@ -107,11 +107,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/gpio-keys.kl \
     $(LOCAL_PATH)/keylayout/sm8150-tavil-snd-card_Button_Jack.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/sm8150-tavil-snd-card_Button_Jack.kl
 
-# Livedisplay
+# Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl.raphael
 
-# Livedisplay
+# LiveDisplay
 PRODUCT_PACKAGES += \
     lineage.livedisplay@2.0-service-sdm
 
