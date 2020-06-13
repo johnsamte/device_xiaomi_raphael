@@ -169,3 +169,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+# wifi-ext
+include $(LOCAL_PATH)/wifi-ext/device.mk
