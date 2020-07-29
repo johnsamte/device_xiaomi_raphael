@@ -36,10 +36,13 @@ void property_override(char const prop[], char const value[])
 		__system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
-void property_override_dual(char const system_prop[], char const vendor_prop[], char const value[])
+void property_override_multifp(char const buildfp[], char const systemfp[],
+	char const bootimagefp[], char const vendorfp[], char const value[])
 {
-	property_override(system_prop, value);
-	property_override(vendor_prop, value);
+	property_override(buildfp, value);
+	property_override(systemfp, value);
+	property_override(bootimagefp, value);
+	property_override(vendorfp, value);
 }
 
 void load_raphaelglobal()
@@ -117,7 +120,8 @@ void vendor_load_properties()
 	property_override("org.evolution.build_support_url", "https://t.me/EvolutionXRaphael");
 	property_override("ro.apex.updatable", "true");
 	property_override("ro.oem_unlock_supported", "0");
-	property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "google/coral/coral:10/QQ3A.200705.002/6506677:user/release-keys");
+	property_override_multifp("ro.build.fingerprint", "ro.system.build.fingerprint", "ro.bootimage.build.fingerprint",
+	    "ro.vendor.build.fingerprint", "google/coral/coral:10/QQ3A.200705.002/6506677:user/release-keys");
 
 	load_dalvikvm_properties();
 }
