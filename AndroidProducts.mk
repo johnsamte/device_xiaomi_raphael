@@ -5,4 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_raphael.mk
+    $(LOCAL_DIR)/evolution_raphael.mk
+
+COMMON_LUNCH_CHOICES := \
+    evolution_raphael-user \
+    evolution_raphael-userdebug \
+    evolution_raphael-eng

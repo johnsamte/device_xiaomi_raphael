@@ -1,8 +1,0 @@
-[
-  {
-    "remote": "evo-devices",
-    "repository": "vendor_xiaomi",
-    "target_path": "vendor/xiaomi",
-    "branch": "ten"
-  }
-]
