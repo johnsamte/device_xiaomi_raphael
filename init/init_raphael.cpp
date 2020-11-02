@@ -120,7 +120,7 @@ void vendor_load_properties()
 	property_override("ro.apex.updatable", "true");
 	property_override("ro.oem_unlock_supported", "0");
 	property_override_multifp("ro.build.fingerprint", "ro.system.build.fingerprint", "ro.bootimage.build.fingerprint",
-	    "ro.vendor.build.fingerprint", "google/coral/coral:11/RP1A.201005.004/6782484:user/release-keys");
+	    "ro.vendor.build.fingerprint", "google/coral/coral:11/RP1A.201105.002/6869500:user/release-keys");
 
 	load_dalvik_properties();
 }
