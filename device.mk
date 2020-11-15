@@ -101,7 +101,6 @@ PRODUCT_BOOT_JARS += \
 # Init
 PRODUCT_PACKAGES += \
     init.mi_thermald.rc \
-    init.safailnet.rc \
     init.qcom.rc \
     init.qcom.usb.sh
 

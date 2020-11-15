@@ -24,8 +24,6 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-import /system/etc/init/init.safailnet.rc
-
 on boot
     # Allow system to read measured screen FPS
     chown system graphics /sys/class/drm/card0/sde-crtc-0/measured_fps
