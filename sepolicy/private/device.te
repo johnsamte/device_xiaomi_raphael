@@ -1,0 +1,2 @@
+#Add qdsp_device type
+type qdsp_device, dev_type, mlstrustedobject;
