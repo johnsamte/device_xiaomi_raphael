@@ -174,10 +174,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
-# TextClassifier
-PRODUCT_PACKAGES += \
-    textclassifier.bundle1
-
 # Vendor Overlays
 PRODUCT_PACKAGES += \
     AospFrameworkResOverlay \
