@@ -6,3 +6,5 @@ allow platform_app cgroup:file r_file_perms;
 allow platform_app cgroup:file { open read };
 allow platform_app default_android_service:service_manager find;
 allow platform_app hal_displayfeature_hwservice:hwservice_manager find;
+
+allow platform_app sysfs_graphics:file r_file_perms;
