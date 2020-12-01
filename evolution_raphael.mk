@@ -8,6 +8,7 @@ $(call inherit-product, device/xiaomi/raphael/device.mk)
 
 # Inherit some common Evolution X stuff.
 EVO_BUILD_TYPE := OFFICIAL
+EXTRA_FOD_ANIMATIONS := true
 TARGET_BOOT_ANIMATION_RES := 1080
 WITH_GAPPS := true
 $(call inherit-product, vendor/evolution/config/common_full_phone.mk)
