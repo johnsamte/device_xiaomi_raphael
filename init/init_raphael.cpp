@@ -20,106 +20,90 @@
 #include <sys/_system_properties.h>
 #include <sys/sysinfo.h>
 
+#include "property_service.h"
 #include "vendor_init.h"
 
-void property_override(char const prop[], char const value[])
-{
-	prop_info *pi;
+void property_override(char const prop[], char const value[]) {
+    prop_info *pi;
 
-	pi = (prop_info *)__system_property_find(prop);
-	if (pi)
-		__system_property_update(pi, value, strlen(value));
-	else
-		__system_property_add(prop, strlen(prop), value, strlen(value));
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else
+        __system_property_add(prop, strlen(prop), value, strlen(value));
+}
+
+void load_dalvik_properties() {
+    struct sysinfo sys;
+
+    sysinfo(&sys);
+    if (sys.totalram < 6144ull * 1024 * 1024) {
+        // from - phone-xhdpi-6144-dalvik-heap.mk
+        property_override("dalvik.vm.heapstartsize", "16m");
+        property_override("dalvik.vm.heapgrowthlimit", "256m");
+        property_override("dalvik.vm.heapsize", "512m");
+        property_override("dalvik.vm.heapmaxfree", "32m");
+    } else {
+        // 8GB & 12GB RAM
+        property_override("dalvik.vm.heapstartsize", "32m");
+        property_override("dalvik.vm.heapgrowthlimit", "512m");
+        property_override("dalvik.vm.heapsize", "768m");
+        property_override("dalvik.vm.heapmaxfree", "64m");
+    }
+
+    property_override("dalvik.vm.heaptargetutilization", "0.5");
+    property_override("dalvik.vm.heapminfree", "8m");
 }
 
 void property_override_multifp(char const buildfp[], char const systemfp[],
-	char const bootimagefp[], char const vendorfp[], char const value[])
-{
-	property_override(buildfp, value);
-	property_override(systemfp, value);
-	property_override(bootimagefp, value);
-	property_override(vendorfp, value);
+        char const bootimagefp[], char const vendorfp[], char const value[]) {
+    property_override(buildfp, value);
+    property_override(systemfp, value);
+    property_override(bootimagefp, value);
+    property_override(vendorfp, value);
 }
 
-void load_raphaelglobal()
-{
-	property_override("ro.product.model", "Mi 9T Pro");
-	property_override("ro.build.product", "raphael");
-	property_override("ro.product.device", "raphael");
-	property_override("ro.build.description", "raphael-user 10 QKQ1.190825.002 V12.0.3.0.QFKMIXM release-keys");
+void load_raphaelglobal() {
+    property_override("ro.product.model", "Mi 9T Pro");
+    property_override("ro.build.product", "raphael");
+    property_override("ro.product.device", "raphael");
+    property_override("ro.build.description", "raphael-user 10 QKQ1.190825.002 V12.0.3.0.QFKMIXM release-keys");
 }
 
-void load_raphaelin()
-{
-	property_override("ro.product.model", "Redmi K20 Pro");
-	property_override("ro.build.product", "raphaelin");
-	property_override("ro.product.device", "raphaelin");
-	property_override("ro.build.description", "raphaelin-user 10 QKQ1.190825.002 V12.0.3.0.QFKINXM release-keys");
+void load_raphaelin() {
+    property_override("ro.product.model", "Redmi K20 Pro");
+    property_override("ro.build.product", "raphaelin");
+    property_override("ro.product.device", "raphaelin");
+    property_override("ro.build.description", "raphaelin-user 10 QKQ1.190825.002 V12.0.4.0.QFKINXM release-keys");
 }
 
-void load_raphael()
-{
-	property_override("ro.product.model", "Redmi K20 Pro");
-	property_override("ro.build.product", "raphael");
-	property_override("ro.product.device", "raphael");
-	property_override("ro.build.description", "raphael-user 10 QKQ1.190825.002 V12.0.5.0.QFKCNXM release-keys");
+void load_raphael() {
+    property_override("ro.product.model", "Redmi K20 Pro");
+    property_override("ro.build.product", "raphael");
+    property_override("ro.product.device", "raphael");
+    property_override("ro.build.description", "raphael-user 10 QKQ1.190825.002 V12.0.6.0.QFKCNXM release-keys");
 }
 
-void load_dalvik_properties()
-{
-	struct sysinfo sys;
+void vendor_load_properties() {
+    std::string region = android::base::GetProperty("ro.boot.hwc", "");
 
-	sysinfo(&sys);
-	if (sys.totalram < 6144ull * 1024 * 1024)
-	{
-		// from - phone-xhdpi-6144-dalvik-heap.mk
-		property_override("dalvik.vm.heapstartsize", "16m");
-		property_override("dalvik.vm.heapgrowthlimit", "256m");
-		property_override("dalvik.vm.heapsize", "512m");
-		property_override("dalvik.vm.heapmaxfree", "32m");
-	}
-	else
-	{
-		// 8GB & 12GB RAM
-		property_override("dalvik.vm.heapstartsize", "32m");
-		property_override("dalvik.vm.heapgrowthlimit", "512m");
-		property_override("dalvik.vm.heapsize", "768m");
-		property_override("dalvik.vm.heapmaxfree", "64m");
-	}
+    if (region.find("CN") != std::string::npos) {
+        load_raphael();
+    } else if (region.find("INDIA") != std::string::npos) {
+        load_raphaelin();
+    } else if (region.find("GLOBAL") != std::string::npos) {
+        load_raphaelglobal();
+    } else {
+        LOG(ERROR) << __func__ << ": unexcepted region!";
+    }
 
-	property_override("dalvik.vm.heaptargetutilization", "0.5");
-	property_override("dalvik.vm.heapminfree", "8m");
-}
+    load_dalvik_properties();
 
-void vendor_load_properties()
-{
-	std::string region = android::base::GetProperty("ro.boot.hwc", "");
-
-	if (region.find("CN") != std::string::npos)
-	{
-		load_raphael();
-	}
-	else if (region.find("INDIA") != std::string::npos)
-	{
-		load_raphaelin();
-	}
-	else if (region.find("GLOBAL") != std::string::npos)
-	{
-		load_raphaelglobal();
-	}
-	else
-	{
-		LOG(ERROR) << __func__ << ": unexcepted region!";
-	}
-
-	property_override("org.evolution.build_donate_url", "https://paypal.me/joeyhuab");
-	property_override("org.evolution.build_maintainer", "Joey Huab");
-	property_override("org.evolution.build_support_url", "https://t.me/EvolutionXRaphael");
-	property_override("ro.apex.updatable", "true");
-	property_override("ro.oem_unlock_supported", "0");
-	property_override_multifp("ro.build.fingerprint", "ro.system.build.fingerprint", "ro.bootimage.build.fingerprint",
-	    "ro.vendor.build.fingerprint", "google/redfin/redfin:11/RQ1A.201205.010/6953398:user/release-keys");
-
-	load_dalvik_properties();
+    property_override("org.evolution.build_donate_url", "https://paypal.me/joeyhuab");
+    property_override("org.evolution.build_maintainer", "Joey Huab");
+    property_override("org.evolution.build_support_url", "https://t.me/EvolutionXRaphael");
+    property_override("ro.apex.updatable", "true");
+    property_override("ro.oem_unlock_supported", "0");
+    property_override_multifp("ro.build.fingerprint", "ro.system.build.fingerprint", "ro.bootimage.build.fingerprint",
+        "ro.vendor.build.fingerprint", "google/redfin/redfin:11/RQ1A.201205.010/6953398:user/release-keys");
 }
