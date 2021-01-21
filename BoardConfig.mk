@@ -241,3 +241,6 @@ BOARD_VNDK_VERSION := current
 
 # Inherit from the proprietary version
 -include vendor/xiaomi/raphael/BoardConfigVendor.mk
+
+# FOD key for InputDispatcher to skip
+TARGET_INPUTDISPATCHER_SKIP_EVENT_KEY := 338
