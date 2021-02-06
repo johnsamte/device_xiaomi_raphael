@@ -324,7 +324,7 @@ PRODUCT_PACKAGES += \
 
 # Vendor Overlays
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor-overlay/,$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION))
+    $(LOCAL_PATH)/vendor-overlay/etc/vintf/manifest/st_disable.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/vintf/manifest/st_disable.xml
 
 PRODUCT_PACKAGES += \
     AospFrameworkResOverlay \
