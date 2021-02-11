@@ -27,4 +27,3 @@ allow hal_fod_raphael vendor_fp_prop:file { getattr map open read };
 
 # hwservice context
 add_hwservice(hal_fod_raphael, hal_fingerprint_hwservice_xiaomi)
-
