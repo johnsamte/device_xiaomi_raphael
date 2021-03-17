@@ -2019,6 +2019,11 @@ vendor/lib64/libtime_genoff.so
 vendor/bin/tloc_daemon
 vendor/etc/init/tloc_daemon.rc
 
+# Touchfeature
+vendor/bin/hw/vendor.xiaomi.hardware.touchfeature@1.0-service
+vendor/etc/init/vendor.xiaomi.hardware.touchfeature@1.0-service.rc
+vendor/lib64/hw/vendor.xiaomi.hardware.touchfeature@1.0-impl.so
+
 # WiFi
 vendor/bin/athdiag
 vendor/bin/hal_proxy_daemon
