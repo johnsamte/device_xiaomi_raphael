@@ -599,4 +599,8 @@
     <string name="config_batDesCap">/sys/class/power_supply/bms/charge_full_design</string>
     <string name="config_batCurCap">/sys/class/power_supply/bms/charge_full</string>
     <bool name="config_supportBatteryHealth">false</bool>
+
+    <!-- Defines the sysfs attribute path used by the device
+         to enable/disable DC dimming. -->
+    <string name="config_deviceDcDimmingSysfsNode">/sys/devices/platform/soc/soc:qcom,dsi-display-primary/msm_fb_ea_enable</string>
 </resources>
