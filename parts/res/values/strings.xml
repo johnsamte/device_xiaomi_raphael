@@ -103,9 +103,9 @@
     <!-- FPS Counter -->
     <string name="fps_info_title">FPS Counter</string>
 
-    <!-- Thermal Profiles and Game Mode-->
-    <string name="thermal_title">Thermal Profiles and Game Mode</string>
-    <string name="thermal_summary">Adjust per-app thermal and touchscreen profiles for optimum performance</string>
+    <!-- Thermal Profiles -->
+    <string name="thermal_title">Thermal Profiles</string>
+    <string name="thermal_summary">Adjust per-app thermal profiles for optimum performance</string>
     <string name="thermal_default">Default</string>
     <string name="thermal_benchmark">Benchmark</string>
     <string name="thermal_browser">Browser</string>
@@ -123,4 +123,5 @@
     <string name="dc_dimming_enable_title">DC Dimming</string>
     <string name="dc_dimming_enable_summary">DC Dimming reduces eye strain in low light conditions (Note: reduce image quality)</string>
     <string name="dc_dimming_enable_summary_not_supported">DC Dimming is not currently supported by the kernel</string>
+
 </resources>
