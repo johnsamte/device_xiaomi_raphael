@@ -479,7 +479,7 @@
         <item>0</item>
         <item>12</item>
         <item>7</item>
-    </integer-array>
+c    </integer-array>
 
     <!-- Vibrator pattern for feedback about touching a virtual key -->
     <integer-array name="config_virtualKeyVibePattern">
@@ -597,11 +597,5 @@
     <string name="config_batDesCap">/sys/class/power_supply/bms/charge_full_design</string>
     <string name="config_batCurCap">/sys/class/power_supply/bms/charge_full</string>
     <bool name="config_supportBatteryHealth">false</bool>
-
-    <!-- Whether device supports an alt. ambient display -->
-    <bool name="config_alt_ambient_display">true</bool>
-
-    <!-- Enable face auth only when swiping security view -->
-    <bool name="config_faceAuthOnlyOnSecurityView">true</bool>
 
 </resources>
